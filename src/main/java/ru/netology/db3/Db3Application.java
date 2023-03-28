@@ -9,5 +9,4 @@ public class Db3Application {
     public static void main(String[] args) {
         SpringApplication.run(Db3Application.class, args);
     }
-
 }
