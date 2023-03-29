@@ -5,6 +5,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import javax.sql.DataSource;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -17,14 +18,12 @@ import java.util.stream.Collectors;
 
 @Repository
 public class RepositoryDB {
-
-    @Autowired
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
-
     private String query;
 
-    public RepositoryDB() {
+    public RepositoryDB(DataSource dataSource) {
         query = read("SelectProducts.sql");
+        this.namedParameterJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
     }
 
     public List<String> getProductName(String name) {
