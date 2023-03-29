@@ -1,6 +1,6 @@
 create table if not exists ddl.CUSTOMERS
 (
-    id           int ,
+    id           serial primary key,
     name         varchar(100) not null,
     surname      varchar(100) not null,
     age          int          not null,
@@ -22,7 +22,7 @@ values ('Maxim', 'Orlov', 44, '89404444444');
 
 create table if not exists ddl.ORDERS
 (
-    id           int ,
+    id           serial primary key  ,
     date         date         not null,
     customer_id  int          not null,
     product_name varchar(100) not null,
